@@ -11,8 +11,8 @@ jobs:
 
     env:
       # Define global variables here
-      IMAGE_NAME: myapp:latest
-      TAR_FILE: myapp_latest.tar.gz
+      IMAGE_NAME: test_docker
+      TAR_FILE: test_img.tar.gz
 
     steps:
       # Step 1: Checkout repository
