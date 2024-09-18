@@ -14,4 +14,4 @@ ENV TEST2=${TEST2}
 RUN sum=$((TEST1 + TEST2)) && echo "The sum of ${TEST1} and ${TEST2} is: $sum"
 
 # Test finish
-RUN echo " Test using build args from file passed ${TEST_ARG}."
+echo "Test using build args from file passed ${TEST_ARG}."
