@@ -21,9 +21,11 @@ jobs:
 
       # Step 2: Read custom build-args from file
       - name: Read custom build-args from file
+        id: read-build-args
         run: |
-          BUILD_ARGS=$(cat build-args.conf | xargs -I {} echo "--build-arg {}")
+          BUILD_ARGS=$(awk '{print "--build-arg " $0}' build-args.conf)
           echo "BUILD_ARGS=${BUILD_ARGS}" >> $GITHUB_ENV
+        shell: bash
 
       # Step 3: Set up Docker Buildx
       - name: Set up Docker Buildx
@@ -39,7 +41,7 @@ jobs:
         run: |
           docker save ${{ env.IMAGE_NAME }} | gzip > ${{ env.TAR_FILE }}
 
-      # Step 6: Optionally, you can verify the saved image
+      # Step 6: Optionally, verify the saved image
       - name: Verify saved Docker image
         run: |
           ls -lh ${{ env.TAR_FILE }}
