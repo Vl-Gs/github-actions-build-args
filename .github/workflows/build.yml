@@ -24,7 +24,7 @@ jobs:
         id: read-build-args
         run: |
           BUILD_ARGS=$(cat build-args.conf | xargs)
-          echo "::set-output name=build_args::$GITHUB_ENV"
+          echo "BUILD_ARGS=${BUILD_ARGS}" >> $GITHUB_ENV
 
       # Step 3: Set up Docker Buildx
       - name: Set up Docker Buildx
