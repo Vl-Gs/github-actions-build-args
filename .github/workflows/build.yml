@@ -24,6 +24,7 @@ jobs:
         id: read-build-args
         run: |
           BUILD_ARGS=$(awk '{print "--build-arg " $0}' build-args.conf)
+          echo "BUILD_ARGS=${BUILD_ARGS}"
           echo "BUILD_ARGS=${BUILD_ARGS}" >> $GITHUB_ENV
 
       # Step 3: Set up Docker Buildx
@@ -33,6 +34,8 @@ jobs:
       # Step 4: Build Docker image with custom build-args
       - name: Build Docker image with custom build-args
         run: |
+          echo "Building Docker image with the following args:"
+          echo ${{ env.BUILD_ARGS }}
           docker buildx build ${{ env.BUILD_ARGS }} -t ${{ env.IMAGE_NAME }} .
 
       # Step 5: Save Docker image to a .tar.gz file
