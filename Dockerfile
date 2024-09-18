@@ -1,8 +1,8 @@
 # Dockerfile
 FROM alpine:latest
 ARG TEST_ARG="PASSED WELL"
-ARG TEST1
-ARG TEST2
+ARG TEST1=TEST1
+ARG TEST2=TEST2
 
 # Echo the build arguments
 RUN echo "The value of TEST1 is $TEST1"
