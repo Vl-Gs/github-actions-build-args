@@ -19,13 +19,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+     
+      
+      
+      
       # Step 2: Read custom build-args from file
+      
       - name: Read custom build-args from file
-        id: read-build-args
         run: |
-          BUILD_ARGS=$(cat build-args.conf | xargs)
+          BUILD_ARGS=$(cat build-args.conf | xargs -I {} echo "{}")
           echo "BUILD_ARGS=${BUILD_ARGS}" >> $GITHUB_ENV
-
+      
       # Step 3: Set up Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
