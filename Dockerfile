@@ -2,6 +2,7 @@
 FROM ubuntu:latest
 
 # Define build arguments
+ARG TEST_ARG
 ARG TEST1
 ARG TEST2
 
