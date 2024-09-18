@@ -12,4 +12,3 @@ RUN echo "The value of TEST2 is $TEST2"
 RUN result=$((TEST1 + TEST2)) && echo "The result of TEST1 + TEST2 is $result"
 
 RUN echo "The value of TEST_ARG is $TEST_ARG"
-run echo
