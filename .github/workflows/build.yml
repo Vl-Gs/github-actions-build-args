@@ -31,9 +31,9 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       # Step 4: Build Docker image with custom build-args
-      - name: Build Docker image
+      - name: Build Docker image with custom build-args
         run: |
-          docker build ${{ steps.read-build-args.outputs.build_args }} -t ${{ env.IMAGE_NAME }} .
+          docker buildx build --build-arg ${BUILD_ARGS} -t ${{ env.IMAGE_NAME }} .
 
       # Step 5: Save Docker image to a .tar.gz file
       - name: Save Docker image to .tar.gz file
